@@ -18,7 +18,7 @@ pub fn encrypt(text: &String, key1: i32, key2: i32) -> String {
 pub fn decrypt(cipher: &String, key1: i32, key2: i32) -> String {
     let mut result: String = "".to_string();
     let _key1 = inv(&key1, 26);
-    println!("inv={}", _key1);
+    // println!("inv={}", _key1);
     for t in cipher.chars() {
         let temp: i32 = t as i32;
         if temp >= 65 && temp <= 90 {
