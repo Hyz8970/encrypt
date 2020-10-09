@@ -4,7 +4,7 @@ pub fn encrypt(text: &String, matrix: [[i32; 2]; 2]) -> String {
     let mut len = text.len();
     let mut str: Vec<i32> = vec![];
     if len % 2 == 1 {
-        temp.push('=');
+        temp.push('a');
         len = temp.len();
         flag = 1;
     }
@@ -29,9 +29,8 @@ pub fn encrypt(text: &String, matrix: [[i32; 2]; 2]) -> String {
         arr.push((t1 * matrix[0][0] + t2 * matrix[1][0]) % 26);
         arr.push((t1 * matrix[0][1] + t2 * matrix[1][1]) % 26);
     }
-    // println!("{:?}", arr);
     if 1 == flag {
-        arr.pop();
+        arr.push(-36);//奇数加等号标识
     }
     let mut result = String::new();
     for a in arr {
@@ -46,7 +45,7 @@ pub fn decrypt(cipher: &String, matrix: [[i32; 2]; 2]) -> String {
     let mut len = cipher.len();
     let mut str: Vec<i32> = vec![];
     if len % 2 == 1 {
-        temp.push('=');
+        temp.pop();//去掉等号
         len = temp.len();
         flag = 1;
     }
