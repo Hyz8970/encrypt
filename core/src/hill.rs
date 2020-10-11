@@ -1,6 +1,6 @@
 pub fn encrypt(text: &String, matrix: [[i32; 2]; 2]) -> String {
     let mut flag = 0;
-    let mut temp = text.clone();
+    let mut temp = text.to_lowercase();
     let mut len = text.len();
     let mut str: Vec<i32> = vec![];
     if len % 2 == 1 {
@@ -10,11 +10,7 @@ pub fn encrypt(text: &String, matrix: [[i32; 2]; 2]) -> String {
     }
     for t in temp.chars() {
         let tt = t as i32;
-        if tt >= 65 && tt <= 90 {
-            str.push(tt + 32 - 97);
-        } else {
-            str.push(tt - 97);
-        }
+        str.push(tt - 97);
     }
     let mut arr: Vec<i32> = vec![];
     for j in (0..len).step_by(2) {
@@ -41,7 +37,7 @@ pub fn encrypt(text: &String, matrix: [[i32; 2]; 2]) -> String {
 
 pub fn decrypt(cipher: &String, matrix: [[i32; 2]; 2]) -> String {
     let mut flag = 0;
-    let mut temp = cipher.clone();
+    let mut temp = cipher.to_lowercase();
     let mut len = cipher.len();
     let mut str: Vec<i32> = vec![];
     if len % 2 == 1 {
@@ -51,11 +47,7 @@ pub fn decrypt(cipher: &String, matrix: [[i32; 2]; 2]) -> String {
     }
     for t in temp.chars() {
         let tt = t as i32;
-        if tt >= 65 && tt <= 90 {
-            str.push(tt + 32 - 97);
-        } else {
-            str.push(tt - 97);
-        }
+        str.push(tt - 97);
     }
     //求逆
     let mut te = -1;
